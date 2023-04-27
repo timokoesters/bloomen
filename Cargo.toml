@@ -1,0 +1,41 @@
+[package]
+name = "bloomen"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4.17"
+wgpu = { version = "0.16", features = ["webgl"]}
+console_error_panic_hook = "0.1.7"
+console_log = "1.0.0"
+raw-window-handle = "0.5.2"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+tokio = { version = "1.27.0", features = ["macros", "rt-multi-thread"] }
+axum = "0.6.16"
+axum_static = "1.2.1"
+
+[dependencies.image]
+version = "0.24.6"
+default-features = false
+features = ["png", "jpeg"]
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+tokio = { version = "1.27.0", features = ["macros", "sync"] }
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4.34"
+web-sys = { version = "0.3", features = [
+    "Document",
+    "Window",
+    "Element",
+    "MouseEvent",
+    "DomRect",
+]}
+js-sys = "0.3.61"
+bytemuck = { version = "1.13.1", features = ["derive"] }
+instant = { version = "0.1.12", features = [ "wasm-bindgen" ] }
+
+[lib]
+crate-type = ["cdylib", "rlib"]

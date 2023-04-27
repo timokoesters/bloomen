@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Bloomen</title>
+<link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+
+<h1>bloomen</h1>
+
+<div class="images">
+<canvas id="canvas"></canvas>
+</div>
+
+<script type="module">
+  import init from "./pkg/bloomen.js";
+  init().then(() => {
+    console.log("WASM Loaded");
+  });
+</script>
+
+</body>
+</html> 
